@@ -4,8 +4,10 @@ import '/styles/nprogress.css';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-function MyApp({ Component, pageProps }) {
+export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
@@ -28,14 +30,30 @@ function MyApp({ Component, pageProps }) {
     };
   }, [router]);
 
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#262626',
+      },
+      secondary: {
+        main: '#606060',
+      },
+    },
+  });
+
   return (
     <>
       <Head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+        />
         <title>NextJS App</title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
-
-export default MyApp;
