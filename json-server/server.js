@@ -1,4 +1,5 @@
 const jsonServer = require('json-server');
+const { default: next } = require('next');
 const server = jsonServer.create();
 const router = jsonServer.router('json-server/db.json');
 const middlewares = jsonServer.defaults();
@@ -24,7 +25,7 @@ server.use(jsonServer.bodyParser);
 server.use((req, res, next) => {
   let authorized = false;
 
-  if (req.method === 'GET' || req.path === '/login') {
+  if (req.method === 'GET' || req.path === '/login' || req.path === '/authorization') {
     next();
   } else {
     const token = req.headers.authorization;
@@ -44,7 +45,7 @@ server.use((req, res, next) => {
 });
 
 // Admin authorization
-server.post('/login', (req, res) => {
+server.post('/login', (req, res, next) => {
   const credentials = req.body;
 
   router.db
@@ -63,6 +64,30 @@ server.post('/login', (req, res) => {
         });
       }
     });
+  next();
+});
+
+server.post('/authorization', (req, res) => {
+  let authorized = false;
+  const token = req.headers.authorization;
+
+  router.db
+    .get('tokens')
+    .value()
+    .forEach((_token) => {
+      if (token === 'Bearer ' + _token) {
+        authorized = true;
+        res.json({
+          authorized: authorized,
+        });
+      }
+    });
+
+  if (!authorized) {
+    res.json({
+      authorized: authorized,
+    });
+  }
 });
 
 // Default json-server behaviour

@@ -1,18 +1,17 @@
 import Head from 'next/head';
-import '/styles/global.scss';
 import '/styles/nprogress.css';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import NProgress from 'nprogress';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { CookiesProvider } from 'react-cookie';
 
 export default function MyApp({ Component, pageProps }) {
   const router = useRouter();
 
   useEffect(() => {
-    const handleStart = (url) => {
-      console.log(`Loading: ${url}`);
+    const handleStart = () => {
       NProgress.start();
     };
     const handleStop = () => {
@@ -50,10 +49,12 @@ export default function MyApp({ Component, pageProps }) {
         />
         <title>NextJS App</title>
       </Head>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <CookiesProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CookiesProvider>
     </>
   );
 }

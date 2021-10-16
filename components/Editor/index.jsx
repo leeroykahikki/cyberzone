@@ -2,15 +2,15 @@ import EditorJS from '@editorjs/editorjs';
 import tools from './tools';
 import { useEffect, useState } from 'react';
 
-export const useEditor = (toolsList, { data, editorRef }, options = {}) => {
+export const useEditor = (toolsList, { data, editorRef }, readOnly) => {
   const [editorInstance, setEditor] = useState(null);
-  const { data: ignoreData, tools: ignoreTools, holder: ignoreHolder } = options;
 
   useEffect(() => {
     const editor = new EditorJS({
       holder: 'editor',
       tools: toolsList,
       data: data || {},
+      readOnly: readOnly || false,
       placeholder: 'Введите текст вашей статьи',
       autofocus: true,
     });
@@ -40,7 +40,7 @@ export const useEditor = (toolsList, { data, editorRef }, options = {}) => {
   return { editor: editorInstance };
 };
 
-export function Editor({ editorRef, data, options }) {
-  useEditor(tools, { data, editorRef }, options);
+export function Editor({ editorRef, data, readOnly }) {
+  useEditor(tools, { data, editorRef }, readOnly);
   return <div id="editor" />;
 }

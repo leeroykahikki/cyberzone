@@ -5,10 +5,7 @@ export const useSaveCallback = (editor) => {
     if (!editor) return;
     try {
       const out = await editor.save();
-      console.group('EDITOR onSave');
-      console.dir(out);
-      console.info('Saved in localStorage');
-      console.groupEnd();
+      return out;
     } catch (e) {
       console.error('SAVE RESULT failed', e);
     }
