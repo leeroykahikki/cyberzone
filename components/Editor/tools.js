@@ -1,6 +1,10 @@
 import Header from '@editorjs/header';
 import Paragraph from '@editorjs/paragraph';
 import List from '@editorjs/list';
+import Embed from '@editorjs/embed';
+import Table from '@editorjs/table';
+import LinkTool from '@editorjs/link';
+import SimpleImage from '@editorjs/simple-image';
 
 export default {
   header: {
@@ -20,4 +24,8 @@ export default {
     class: List,
     inlineToolbar: true,
   },
+  embed: Embed,
+  table: Table,
+  linkTool: LinkTool,
+  simpleImage: SimpleImage,
 };

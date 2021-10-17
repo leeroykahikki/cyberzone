@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback } from 'react';
 
 export const useSaveCallback = (editor) => {
   return useCallback(async () => {
