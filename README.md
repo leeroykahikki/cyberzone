@@ -1,4 +1,4 @@
-# RTU-Cyberzone 
+# Cyberzone 
 ## News website
 
 This news site is a regular website where you can view, create and edit news.
@@ -27,12 +27,12 @@ This news site is a regular website where you can view, create and edit news.
 
 ## Installation
 
-RTU-Cyberzone requires [Node.js](https://nodejs.org/) v14+ to run (other versions have not been tested).
+Cyberzone requires [Node.js](https://nodejs.org/) v14+ to run (other versions have not been tested).
 
 Install the dependencies and devDependencies:
 
 ```sh
-cd rtu-cyberzone
+cd cyberzone
 npm i
 ```
 
