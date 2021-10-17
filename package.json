@@ -1,5 +1,5 @@
 {
-  "name": "rtu-cyberzone",
+  "name": "cyberzone",
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
