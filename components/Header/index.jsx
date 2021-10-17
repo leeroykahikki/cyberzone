@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useForm, Controller } from 'react-hook-form';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -20,6 +20,7 @@ import {
   OutlinedInput,
 } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
+import { AuthorizationContext } from '/pages/_app';
 
 const styleModal = {
   position: 'absolute',
@@ -39,11 +40,13 @@ const styleLink = {
   flexGrow: 1,
 };
 
-export default function Header({ title, isAuthorized, toggleAuthorization }) {
+export default function Header({ title }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [cookie, setCookie, removeCookie] = useCookies(['accessToken']);
+  const { isAuthorized, toggleAuthorization } = useContext(AuthorizationContext);
+
   const {
     control,
     handleSubmit,
@@ -82,7 +85,7 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
     setAnchorEl(null);
   };
 
-  const handleExit = async () => {
+  const handleExit = () => {
     removeCookie('accessToken');
     if (isAuthorized) {
       toggleAuthorization();
@@ -124,15 +127,25 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
                   open={Boolean(anchorEl)}
                   onClose={handleCloseMenu}>
                   {isAuthorized ? (
-                    <MenuItem onClick={handleExit}>Выйти</MenuItem>
+                    [
+                      <Link key="link_1" href="/article/create">
+                        <MenuItem onClick={handleCloseMenu}>Создать</MenuItem>
+                      </Link>,
+                      <MenuItem key="menu_1" onClick={handleExit}>
+                        Выйти
+                      </MenuItem>,
+                    ]
                   ) : (
-                    <MenuItem onClick={handleOpen}>Войти</MenuItem>
+                    <MenuItem key="menu_2" onClick={handleOpen}>
+                      Войти
+                    </MenuItem>
                   )}
                 </Menu>
               </div>
             </Toolbar>
           </Container>
         </AppBar>
+
         <Modal
           open={open}
           onClose={handleCloseModal}
@@ -147,7 +160,9 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
                 Авторизация
               </Typography>
 
-              <FormControl sx={{ width: '100%', marginBottom: '15px' }}>
+              <FormControl
+                error={error ? error : errors.login && errors.login.type === 'required'}
+                sx={{ width: '100%', marginBottom: '15px' }}>
                 <InputLabel htmlFor="component-outlined">Логин</InputLabel>
                 <Controller
                   name="login"
@@ -155,12 +170,7 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
                   defaultValue=""
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <OutlinedInput
-                      error={error ? error : errors.login && errors.login.type === 'required'}
-                      {...field}
-                      id="component-outlined"
-                      label="Логин"
-                    />
+                    <OutlinedInput {...field} id="component-outlined" label="Логин" />
                   )}
                 />
                 {errors.login && errors.login.type === 'required' && (
@@ -168,7 +178,9 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
                 )}
               </FormControl>
 
-              <FormControl sx={{ width: '100%', marginBottom: '20px' }}>
+              <FormControl
+                error={error ? error : errors.password && errors.password.type === 'required'}
+                sx={{ width: '100%', marginBottom: '20px' }}>
                 <InputLabel htmlFor="component-outlined">Пароль</InputLabel>
                 <Controller
                   name="password"
@@ -176,12 +188,7 @@ export default function Header({ title, isAuthorized, toggleAuthorization }) {
                   defaultValue=""
                   rules={{ required: true }}
                   render={({ field }) => (
-                    <OutlinedInput
-                      error={error ? error : errors.password && errors.password.type === 'required'}
-                      {...field}
-                      id="component-outlined"
-                      label="Пароль"
-                    />
+                    <OutlinedInput {...field} id="component-outlined" label="Пароль" />
                   )}
                 />
                 {errors.password && errors.password.type === 'required' && (

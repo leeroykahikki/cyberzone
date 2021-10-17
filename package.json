@@ -1,20 +1,25 @@
 {
-  "name": "client",
+  "name": "rtu-cyberzone",
   "version": "1.0.0",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "server": "nodemon json-server/server.js"
+    "server dev": "nodemon json-server/server.js",
+    "server": "node json-server/server.js"
   },
   "main": "index.js",
   "author": "Leeroyka",
   "license": "MIT",
   "dependencies": {
     "@editorjs/editorjs": "^2.22.2",
+    "@editorjs/embed": "^2.4.6",
     "@editorjs/header": "^2.6.1",
+    "@editorjs/link": "^2.3.1",
     "@editorjs/list": "^1.6.2",
     "@editorjs/paragraph": "^2.8.0",
+    "@editorjs/simple-image": "^1.4.1",
+    "@editorjs/table": "^2.0.1",
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@mui/icons-material": "^5.0.3",
@@ -22,17 +27,12 @@
     "@mui/material": "^5.0.3",
     "axios": "^0.21.1",
     "cookie": "^0.4.1",
-    "cookies-next": "^2.0.3",
-    "js-cookie": "^3.0.1",
     "moment": "^2.29.1",
     "next": "^11.1.0",
-    "next-cookies": "^2.0.3",
-    "nodemon": "^2.0.13",
     "nprogress": "^0.2.0",
     "react": "^17.0.2",
     "react-cookie": "^4.1.1",
     "react-dom": "^17.0.2",
-    "react-editor-js": "^1.10.0",
     "react-hook-form": "^7.17.4",
     "sass": "^1.38.1"
   },
@@ -41,6 +41,7 @@
     "autoprefixer": "^10.3.2",
     "css-mqpacker": "^7.0.0",
     "json-server": "^0.17.0",
+    "nodemon": "^2.0.13",
     "postcss": "^8.3.6",
     "postcss-preset-env": "^6.7.0"
   },
