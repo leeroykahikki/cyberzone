@@ -1,37 +1,127 @@
 {
   "articles": [
     {
-      "id": 1,
-      "source": "newsBTC",
-      "tags": ["business", "bitcoin"],
-      "author": "Nick Chong",
-      "title": "Bitcoin Sets New All-Time High at $49,400",
-      "description": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,000 range. Bitcoin is moving higher on continued institutional…",
-      "coverImage": "https://www.newsbtc.com/wp-content/uploads/2021/02/ken-cheung-10py7Mvmf1g-unsplash.jpg",
-      "publishedAt": "2021-02-14T07:58:16Z",
-      "content": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,00… [+2028 chars]"
+      "title": "Наикрутейший заголовок",
+      "author": "Суперский автор",
+      "source": "Супер секретный источник",
+      "coverImage": "https://s1.1zoom.ru/big0/367/433183-Kysb.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus ut massa finibus interdum. Sed tincidunt felis eget purus pulvinar, at condimentum metus sodales. Praesent dictum commodo nunc, ut ornare metus gravida eget.",
+      "content": {
+        "time": 1634424774054,
+        "blocks": [
+          {
+            "id": "Ik8uWoec7B",
+            "type": "header",
+            "data": {
+              "text": "Заголовок",
+              "level": 2
+            }
+          },
+          {
+            "id": "VggAl6ZV9M",
+            "type": "paragraph",
+            "data": {
+              "text": "Текст текст текст"
+            }
+          },
+          {
+            "id": "3GICv7RT3x",
+            "type": "list",
+            "data": {
+              "style": "ordered",
+              "items": [
+                "список 1",
+                "список 2",
+                "список 3"
+              ]
+            }
+          }
+        ],
+        "version": "2.22.2"
+      },
+      "id": 1
     },
     {
-      "id": 2,
-      "source": "newsBTC",
-      "tags": ["business", "bitcoin"],
-      "author": "Nick Chong",
-      "title": "Bitcoin Sets New All-Time High at $49,400",
-      "description": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,000 range. Bitcoin is moving higher on continued institutional…",
-      "coverImage": "https://www.newsbtc.com/wp-content/uploads/2021/02/ken-cheung-10py7Mvmf1g-unsplash.jpg",
-      "publishedAt": "2021-02-14T07:58:16Z",
-      "content": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,00… [+2028 chars]"
+      "title": "Наикрутейший заголовок",
+      "author": "Суперский автор",
+      "source": "Супер секретный источник",
+      "coverImage": "https://s1.1zoom.ru/big0/367/433183-Kysb.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus ut massa finibus interdum. Sed tincidunt felis eget purus pulvinar, at condimentum metus sodales. Praesent dictum commodo nunc, ut ornare metus gravida eget.",
+      "content": {
+        "time": 1634424774054,
+        "blocks": [
+          {
+            "id": "Ik8uWoec7B",
+            "type": "header",
+            "data": {
+              "text": "Заголовок",
+              "level": 2
+            }
+          },
+          {
+            "id": "VggAl6ZV9M",
+            "type": "paragraph",
+            "data": {
+              "text": "Текст текст текст"
+            }
+          },
+          {
+            "id": "3GICv7RT3x",
+            "type": "list",
+            "data": {
+              "style": "ordered",
+              "items": [
+                "список 1",
+                "список 2",
+                "список 3"
+              ]
+            }
+          }
+        ],
+        "version": "2.22.2"
+      },
+      "id": 2
     },
     {
-      "id": 3,
-      "source": "newsBTC",
-      "tags": ["business", "bitcoin"],
-      "author": "Nick Chong",
-      "title": "Bitcoin Sets New All-Time High at $49,400",
-      "description": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,000 range. Bitcoin is moving higher on continued institutional…",
-      "coverImage": "https://www.newsbtc.com/wp-content/uploads/2021/02/ken-cheung-10py7Mvmf1g-unsplash.jpg",
-      "publishedAt": "2021-02-14T07:58:16Z",
-      "content": "Bitcoin just rocketed to a new all-time high at $49,400 despite consolidation in the price of Ethereum. The leading cryptocurrency set this new high after spending most of the past week in the $47,00… [+2028 chars]"
+      "title": "Наикрутейший заголовок",
+      "author": "Суперский автор",
+      "source": "Супер секретный источник",
+      "coverImage": "https://s1.1zoom.ru/big0/367/433183-Kysb.jpg",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus ut massa finibus interdum. Sed tincidunt felis eget purus pulvinar, at condimentum metus sodales. Praesent dictum commodo nunc, ut ornare metus gravida eget.",
+      "content": {
+        "time": 1634424774054,
+        "blocks": [
+          {
+            "id": "Ik8uWoec7B",
+            "type": "header",
+            "data": {
+              "text": "Заголовок",
+              "level": 2
+            }
+          },
+          {
+            "id": "VggAl6ZV9M",
+            "type": "paragraph",
+            "data": {
+              "text": "Текст текст текст"
+            }
+          },
+          {
+            "id": "3GICv7RT3x",
+            "type": "list",
+            "data": {
+              "style": "ordered",
+              "items": [
+                "список 1",
+                "список 2",
+                "список 3"
+              ]
+            }
+          }
+        ],
+        "version": "2.22.2"
+      },
+      "id": 3
     }
   ],
   "users": [
@@ -64,6 +154,21 @@
     "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",
-    "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"
+    "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"
   ]
 }

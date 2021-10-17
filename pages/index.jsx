@@ -1,17 +1,20 @@
 import { Grid, Container } from '@mui/material';
 import { parseCookies } from '/utils/cookieParser';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import CardItem from 'components/Card';
 import Header from '/components/Header';
+import { AuthorizationContext } from '/pages/_app';
 
 function Home({ articles, authorizationStatus, authorizationCookie }) {
-  const [isAuthorized, setIsAuthorized] = useState(authorizationStatus);
   const [cardItems, setCardItems] = useState(articles);
+  const { isAuthorized, toggleAuthorization } = useContext(AuthorizationContext);
 
-  const toggleAuthorization = () => {
-    setIsAuthorized((isAuthorized) => !isAuthorized);
-  };
+  useEffect(() => {
+    if (authorizationStatus != isAuthorized) {
+      toggleAuthorization();
+    }
+  }, []);
 
   const handleRemoveCardItem = (id) => {
     setCardItems((prev) => prev.filter((item) => item.id !== id));
@@ -27,7 +30,7 @@ function Home({ articles, authorizationStatus, authorizationCookie }) {
       <Container sx={{ marginBottom: '20px' }}>
         <Grid container spacing={3}>
           {cardItems &&
-            cardItems.map(({ id, source, author, title, description, coverImage, publishedAt }) => (
+            cardItems.map(({ id, source, author, title, description, coverImage, content }) => (
               <Grid item xs={12} sm={12} md={6} lg={4} xl={4} key={id + '_Grid'}>
                 <CardItem
                   id={id}
@@ -36,11 +39,10 @@ function Home({ articles, authorizationStatus, authorizationCookie }) {
                   title={title}
                   description={description}
                   image={coverImage}
-                  date={publishedAt}
+                  date={content.time}
                   isAuthorized={isAuthorized}
                   authorizationCookie={authorizationCookie}
                   handleRemoveCardItem={handleRemoveCardItem}
-                  key={id + '_CardItem'}
                 />
               </Grid>
             ))}
@@ -65,7 +67,7 @@ export async function getServerSideProps({ req }) {
     .then((res) => {
       authorizationStatus = res.data.authorized;
     })
-    .catch((err) => console.log('REQUEST ERROR: ', err));
+    .catch((err) => console.error('REQUEST ERROR: ', err));
 
   // Articles
   let articles = null;
@@ -75,7 +77,7 @@ export async function getServerSideProps({ req }) {
     .then((res) => {
       articles = res.data.reverse();
     })
-    .catch((err) => console.log('REQUEST ERROR:', err));
+    .catch((err) => console.error('REQUEST ERROR:', err));
 
   return {
     props: {

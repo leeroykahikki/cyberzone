@@ -67,10 +67,6 @@ export default function CardItem({
     setAnchorEl(null);
   };
 
-  const handleDelete = () => {
-    setAnchorEl(null);
-  };
-
   // Avatar color
   const colors = {
     1: red,
@@ -133,7 +129,7 @@ export default function CardItem({
 
   return (
     <>
-      <Card>
+      <Card sx={{ minHeight: '490px' }}>
         <CardHeader
           avatar={
             <Tooltip title={author}>
@@ -163,17 +159,20 @@ export default function CardItem({
                   <MenuItem onClick={handleClose}>Открыть</MenuItem>
                 </Link>
                 {isAuthorized && [
-                  <Link href={`/article/${id}`}>
+                  <Link key="link_1" href={`/article/edit/${id}`}>
                     <MenuItem onClick={handleClose}>Редактировать</MenuItem>
                   </Link>,
                   ,
-                  <MenuItem onClick={handleOpenDeleteDialog}>Удалить</MenuItem>,
+                  <MenuItem key="menu_1" onClick={handleOpenDeleteDialog}>
+                    Удалить
+                  </MenuItem>,
                 ]}
               </Menu>
             </div>
           }
           title={title}
           subheader={getDate(date)}
+          sx={{ minHeight: '92px' }}
         />
 
         {source ? (

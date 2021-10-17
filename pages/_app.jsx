@@ -1,13 +1,18 @@
 import Head from 'next/head';
 import '/styles/nprogress.css';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useEffect, createContext, useState } from 'react';
 import NProgress from 'nprogress';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CookiesProvider } from 'react-cookie';
 
+export const AuthorizationContext = createContext(null);
+
 export default function MyApp({ Component, pageProps }) {
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const toggleAuthorization = () => setIsAuthorized((isAuthorized) => !isAuthorized);
+
   const router = useRouter();
 
   useEffect(() => {
@@ -52,7 +57,9 @@ export default function MyApp({ Component, pageProps }) {
       <CookiesProvider>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Component {...pageProps} />
+          <AuthorizationContext.Provider value={{ isAuthorized, toggleAuthorization }}>
+            <Component {...pageProps} />
+          </AuthorizationContext.Provider>
         </ThemeProvider>
       </CookiesProvider>
     </>
