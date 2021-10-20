@@ -1,6 +1,5 @@
 import { Grid, Container, Pagination } from '@mui/material';
 import { parseCookies } from '/utils/cookieParser';
-import { useRouter } from 'next/router';
 import { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import CardItem from 'components/Card';
@@ -8,12 +7,11 @@ import Header from '/components/Header';
 import { AuthorizationContext } from '/pages/_app';
 
 function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
-  const { articles, pageCount, id } = dataFetch;
+  const { articles, pageCount } = dataFetch;
   const [cardItems, setCardItems] = useState(articles);
-  const [currentPage, setCurrentPage] = useState(id);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pages, setPages] = useState(pageCount);
   const { isAuthorized, toggleAuthorization } = useContext(AuthorizationContext);
-  const router = useRouter();
 
   useEffect(() => {
     if (authorizationStatus != isAuthorized) {
@@ -27,12 +25,11 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
 
   const handleChangePage = async (event, value) => {
     await axios
-      .get(`http://localhost:5500/articles?_page=${value}&_limit=9`)
+      .get(`http://localhost:5500/articles?_sort=content.time&_order=desc&_page=${value}&_limit=9`)
       .then((res) => {
         setCurrentPage(value);
-        setPages(Number(res.headers['x-total-count']));
-        setCardItems(res.data.reverse());
-        router.push(`${value}`);
+        setPages(Math.ceil(Number(res.headers['x-total-count']) / 9));
+        setCardItems(res.data);
       })
       .catch((err) => console.error('REQUEST ERROR:', err));
   };
@@ -73,7 +70,7 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
           justifyContent="center"
           sx={{ marginTop: '20px' }}>
           <Grid item xs={3}>
-            <Pagination count={pageCount} page={currentPage} onChange={handleChangePage} />
+            <Pagination count={pages} page={currentPage} onChange={handleChangePage} />
           </Grid>
         </Grid>
       </Container>
@@ -81,7 +78,7 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
   );
 }
 
-export async function getServerSideProps({ params, req }) {
+export async function getServerSideProps({ req }) {
   // isAuthorized
   const data = parseCookies(req);
   let authorizationStatus = null;
@@ -101,19 +98,17 @@ export async function getServerSideProps({ params, req }) {
   // Articles
   let articles = null;
   let pageCount = null;
-  let { id } = params;
 
   await axios
-    .get(`http://localhost:5500/articles?_page=${id}&_limit=9`)
+    .get('http://localhost:5500/articles?_sort=content.time&_order=desc&_page=1&_limit=9')
     .then((res) => {
       pageCount = Number(res.headers['x-total-count']);
-      articles = res.data.reverse();
+      articles = res.data;
     })
     .catch((err) => console.error('REQUEST ERROR:', err));
 
   pageCount = Math.ceil(pageCount / 9);
-  id = Number(id);
-  const dataFetch = { articles, pageCount, id };
+  const dataFetch = { articles, pageCount };
 
   return {
     props: {
