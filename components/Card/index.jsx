@@ -129,67 +129,74 @@ export default function CardItem({
 
   return (
     <>
-      <Card sx={{ minHeight: '490px' }}>
-        <CardHeader
-          avatar={
-            <Tooltip title={author}>
-              <Avatar sx={{ bgcolor: color }}>{author[0].toUpperCase()}</Avatar>
+      <Card
+        sx={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'space-between',
+          flexDirection: 'column',
+        }}>
+        <div>
+          <CardHeader
+            avatar={
+              <Tooltip title={author}>
+                <Avatar sx={{ bgcolor: color }}>{author[0].toUpperCase()}</Avatar>
+              </Tooltip>
+            }
+            action={
+              <div>
+                <IconButton aria-label="settings" onClick={handleMenu}>
+                  <MoreVertIcon />
+                </IconButton>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right',
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}>
+                  <Link href={`/article/${id}`}>
+                    <MenuItem onClick={handleClose}>Открыть</MenuItem>
+                  </Link>
+                  {isAuthorized && [
+                    <Link key="link_1" href={`/article/edit/${id}`}>
+                      <MenuItem onClick={handleClose}>Редактировать</MenuItem>
+                    </Link>,
+                    ,
+                    <MenuItem key="menu_1" onClick={handleOpenDeleteDialog}>
+                      Удалить
+                    </MenuItem>,
+                  ]}
+                </Menu>
+              </div>
+            }
+            title={title}
+            subheader={getDate(date)}
+          />
+
+          {source ? (
+            <Tooltip title={`Источник: ${source}`}>
+              <CardMedia component="img" height="194" image={image} alt="coverImage" />
             </Tooltip>
-          }
-          action={
-            <div>
-              <IconButton aria-label="settings" onClick={handleMenu}>
-                <MoreVertIcon />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}>
-                <Link href={`/article/${id}`}>
-                  <MenuItem onClick={handleClose}>Открыть</MenuItem>
-                </Link>
-                {isAuthorized && [
-                  <Link key="link_1" href={`/article/edit/${id}`}>
-                    <MenuItem onClick={handleClose}>Редактировать</MenuItem>
-                  </Link>,
-                  ,
-                  <MenuItem key="menu_1" onClick={handleOpenDeleteDialog}>
-                    Удалить
-                  </MenuItem>,
-                ]}
-              </Menu>
-            </div>
-          }
-          title={title}
-          subheader={getDate(date)}
-          sx={{ minHeight: '92px' }}
-        />
-
-        {source ? (
-          <Tooltip title={`Источник: ${source}`}>
+          ) : (
             <CardMedia component="img" height="194" image={image} alt="coverImage" />
-          </Tooltip>
-        ) : (
-          <CardMedia component="img" height="194" image={image} alt="coverImage" />
-        )}
+          )}
 
-        <CardContent sx={{ minHeight: '150px', maxHeight: '150px' }}>
-          <Typography variant="body2" color="text.secondary">
-            {description}
-          </Typography>
-        </CardContent>
-
-        <CardActions disableSpacing>
+          <CardContent>
+            <Typography variant="body2" color="text.secondary">
+              {description}
+            </Typography>
+          </CardContent>
+        </div>
+        <CardActions>
           <Link href={`/article/${id}`}>
             <Button>Открыть</Button>
           </Link>
