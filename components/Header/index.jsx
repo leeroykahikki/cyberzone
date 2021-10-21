@@ -51,8 +51,10 @@ export default function Header({ title }) {
     control,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm();
 
+  //! Bug fix
   const onSubmit = async (data) => {
     setLoading(true);
     await axios
@@ -69,6 +71,7 @@ export default function Header({ title }) {
         }
         handleCloseModal();
         setError(false);
+        reset();
       })
       .catch((err) => {
         console.error(err);
