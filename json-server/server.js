@@ -45,7 +45,7 @@ server.use((req, res, next) => {
 });
 
 // Admin authorization
-server.post('/login', (req, res, next) => {
+server.post('/login', (req, res) => {
   const credentials = req.body;
 
   router.db
@@ -58,13 +58,11 @@ server.post('/login', (req, res, next) => {
 
         // Add token to DB
         router.db.get('tokens').push(token).write();
-
         res.json({
           accessToken: token,
         });
       }
     });
-  next();
 });
 
 server.post('/authorization', (req, res) => {
