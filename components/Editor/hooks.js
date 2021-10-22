@@ -1,5 +1,6 @@
 import { useCallback } from 'react';
 
+// Метод для получения данных из EditorJS
 export const useSaveCallback = (editor) => {
   return useCallback(async () => {
     if (!editor) return;

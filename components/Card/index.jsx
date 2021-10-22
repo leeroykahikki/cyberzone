@@ -37,6 +37,7 @@ import moment from 'moment';
 import 'moment/locale/ru';
 import axios from 'axios';
 
+// Метод для смены определённого символа в строке
 String.prototype.replaceAt = function (index, replacement) {
   return this.substr(0, index) + replacement + this.substr(index + replacement.length);
 };
@@ -81,15 +82,17 @@ export default function CardItem({
     10: grey,
   };
 
+  // Установка рандомного цвета иконки
   useEffect(() => {
     setColor(getColor()[500]);
   }, []);
 
+  // Метод получения рандомного цвета
   const getColor = () => {
     return colors[Math.ceil(Math.random() * (Object.keys(colors).length - 0) + 0)];
   };
 
-  // Format date
+  // Форматирование даты из unixtimestamp в обычную
   const getDate = (date) => {
     moment.locale('ru');
     date = moment(date).format('MMMM D, YYYY');
@@ -108,15 +111,16 @@ export default function CardItem({
   const handleDeletePost = async () => {
     setLoading(true);
 
+    // Делаем запрос к БД для удаления статьи
     const headers = {
       Authorization: 'Bearer ' + authorizationCookie,
     };
 
-    console.log(authorizationCookie);
     await axios
       .delete(`http://localhost:5500/articles/${id}`, { headers: headers })
       .then(() => {
-        handleRemoveCardItem(id);
+        // Перерисовываем карточки
+        handleRemoveCardItem();
         setLoading(false);
         setOpenDialog(false);
       })

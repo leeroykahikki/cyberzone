@@ -24,7 +24,7 @@ export default function Article({ authorizationStatus, dataFetch }) {
         <Typography variant="h3" component="div" sx={{ marginBottom: '10px' }}>
           {dataFetch.title}
         </Typography>
-        <Paper sx={{ height: '100%', minHeight: '50vh' }}>
+        <Paper sx={{ height: '100%', minHeight: '50vh', marginBottom: '10px' }}>
           <Editor reInit editorRef={setEditor} data={dataFetch.content} readOnly={true} />
         </Paper>
       </Container>
@@ -33,7 +33,7 @@ export default function Article({ authorizationStatus, dataFetch }) {
 }
 
 export async function getServerSideProps({ params, req }) {
-  // isAuthorized
+  // Проверяем авторизацию по токену
   const data = parseCookies(req);
   let authorizationStatus = null;
 
@@ -49,7 +49,7 @@ export async function getServerSideProps({ params, req }) {
     })
     .catch((err) => console.error('REQUEST ERROR: ', err));
 
-  // Article
+  // Получаем данные нужной статьи
   let dataFetch = null;
   const { id } = params;
 

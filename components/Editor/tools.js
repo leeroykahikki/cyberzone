@@ -6,6 +6,7 @@ import Table from '@editorjs/table';
 import LinkTool from '@editorjs/link';
 import SimpleImage from '@editorjs/simple-image';
 
+// Экспортируем настройки плагинов для EditorJS
 export default {
   header: {
     class: Header,

@@ -19,10 +19,19 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
     }
   }, []);
 
-  const handleRemoveCardItem = (id) => {
-    setCardItems((prev) => prev.filter((item) => item.id !== id));
+  // При удалении карточки берём новую информацию из БД
+  const handleRemoveCardItem = async () => {
+    await axios
+      .get(
+        `http://localhost:5500/articles?_sort=content.time&_order=desc&_page=${currentPage}&_limit=9`,
+      )
+      .then((res) => {
+        setCardItems(res.data);
+      })
+      .catch((err) => console.error('REQUEST ERROR:', err));
   };
 
+  // При изменении страницы берём информация о статьях из новой страницы
   const handleChangePage = async (event, value) => {
     await axios
       .get(`http://localhost:5500/articles?_sort=content.time&_order=desc&_page=${value}&_limit=9`)
@@ -36,11 +45,7 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
 
   return (
     <>
-      <Header
-        title="Новостная лента"
-        isAuthorized={isAuthorized}
-        toggleAuthorization={toggleAuthorization}
-      />
+      <Header title="Новостная лента" />
       <Container sx={{ marginBottom: '20px' }}>
         <Grid container spacing={3}>
           {cardItems &&
@@ -79,7 +84,7 @@ function Home({ dataFetch, authorizationStatus, authorizationCookie }) {
 }
 
 export async function getServerSideProps({ req }) {
-  // isAuthorized
+  // Проверяем авторизацию по токену
   const data = parseCookies(req);
   let authorizationStatus = null;
 
@@ -95,7 +100,7 @@ export async function getServerSideProps({ req }) {
     })
     .catch((err) => console.error('REQUEST ERROR: ', err));
 
-  // Articles
+  // Получаем информацию о статьях из бд
   let articles = null;
   let pageCount = null;
 

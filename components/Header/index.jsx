@@ -54,21 +54,28 @@ export default function Header({ title }) {
     reset,
   } = useForm();
 
-  //! Bug fix
+  // Срабатывает при попытки авторизации
   const onSubmit = async (data) => {
     setLoading(true);
+
+    // Проверяем есть ли такой пользователь
     await axios
       .post('http://localhost:5500/login', data)
       .then((res) => {
+        // Если всё нормально, то создаём куки и кидаем туда токен
         const token = res.data.accessToken;
         setCookie('accessToken', token, {
           path: '/',
           maxAge: 3600 * 24,
           sameSite: true,
         });
+
+        // Меняем стейт авторизации
         if (!isAuthorized) {
           toggleAuthorization();
         }
+
+        // Закрываем модалку и чистим её содержимое
         handleCloseModal();
         setError(false);
         reset();
@@ -88,8 +95,12 @@ export default function Header({ title }) {
     setAnchorEl(null);
   };
 
+  // Срабатывает при выходе
   const handleExit = () => {
+    // Убираем токен авторизации из куки
     removeCookie('accessToken');
+
+    // Меняем стейт авторизации
     if (isAuthorized) {
       toggleAuthorization();
     }

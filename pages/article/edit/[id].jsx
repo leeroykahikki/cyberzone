@@ -38,8 +38,11 @@ export default function Article({ authorizationStatus, authorizationCookie, data
     formState: { errors },
   } = useForm();
 
+  // Метод, который срабатывает при создании статьи
   const onSubmit = async (data) => {
     setLoading(true);
+
+    // Получаем данные из EditorJS
     await onSave()
       .then((dataEditor) => {
         dataEditor.time = dataFetch.content.time;
@@ -47,6 +50,7 @@ export default function Article({ authorizationStatus, authorizationCookie, data
       })
       .catch(() => console.log('ERROR'));
 
+    // Отправляем готовую статью в БД
     const headers = {
       'Content-Type': 'application/json',
       Authorization: 'Bearer ' + authorizationCookie,
@@ -203,7 +207,7 @@ export default function Article({ authorizationStatus, authorizationCookie, data
               loading={loading}
               loadingIndicator="Loading..."
               variant="contained"
-              sx={{ width: '100%', marginTop: '10px' }}>
+              sx={{ width: '100%', marginTop: '10px', marginBottom: '10px' }}>
               Сохранить
             </LoadingButton>
           </form>
@@ -211,6 +215,7 @@ export default function Article({ authorizationStatus, authorizationCookie, data
       </>
     );
   } else {
+    // Если не авторизован, то перебрасывает на главную страницу
     if (typeof window !== 'undefined') {
       router.push('/');
     }
@@ -219,7 +224,7 @@ export default function Article({ authorizationStatus, authorizationCookie, data
 }
 
 export async function getServerSideProps({ params, req }) {
-  // isAuthorized
+  // Проверяем авторизацию по токену
   const data = parseCookies(req);
   let authorizationStatus = null;
 
@@ -235,7 +240,7 @@ export async function getServerSideProps({ params, req }) {
     })
     .catch((err) => console.error('REQUEST ERROR: ', err));
 
-  // Article
+  // Получаем данные нужной статьи
   let dataFetch = null;
   if (authorizationStatus) {
     const { id } = params;

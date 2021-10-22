@@ -29,11 +29,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -70,11 +66,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -111,11 +103,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -152,11 +140,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -193,11 +177,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -234,11 +214,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -275,11 +251,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -316,11 +288,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -357,11 +325,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -398,11 +362,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -439,52 +399,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
-            }
-          }
-        ],
-        "version": "2.22.2"
-      },
-      "id": 11
-    },
-    {
-      "title": "Наикрутейший заголовок",
-      "author": "Суперский автор",
-      "source": "Супер секретный источник",
-      "coverImage": "https://s1.1zoom.ru/big0/367/433183-Kysb.jpg",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vehicula lectus ut massa finibus interdum. Sed tincidunt felis eget purus pulvinar, at condimentum metus sodales. Praesent dictum commodo nunc, ut ornare metus gravida eget.",
-      "content": {
-        "time": 1634671861000,
-        "blocks": [
-          {
-            "id": "Ik8uWoec7B",
-            "type": "header",
-            "data": {
-              "text": "Заголовок",
-              "level": 2
-            }
-          },
-          {
-            "id": "VggAl6ZV9M",
-            "type": "paragraph",
-            "data": {
-              "text": "Текст текст текст"
-            }
-          },
-          {
-            "id": "3GICv7RT3x",
-            "type": "list",
-            "data": {
-              "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -521,11 +436,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -562,11 +473,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -603,11 +510,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -644,11 +547,7 @@
             "type": "list",
             "data": {
               "style": "ordered",
-              "items": [
-                "список 1",
-                "список 2",
-                "список 3"
-              ]
+              "items": ["список 1", "список 2", "список 3"]
             }
           }
         ],
@@ -657,7 +556,7 @@
       "id": 16
     },
     {
-      "title": "Заголовыч",
+      "title": "Менее крутой заголовок",
       "author": "Авторский",
       "source": "",
       "coverImage": "https://www.ejin.ru/wp-content/uploads/2017/09/20-280.jpg",
@@ -702,14 +601,8 @@
             "data": {
               "withHeadings": false,
               "content": [
-                [
-                  "Some table",
-                  "Some table"
-                ],
-                [
-                  "Some table",
-                  "Some table"
-                ]
+                ["Some table", "Some table"],
+                ["Some table", "Some table"]
               ]
             }
           }
@@ -731,10 +624,5 @@
       "password": "root666"
     }
   ],
-  "tokens": [
-    "qGm73o1E57OWcrb7iqXz8GLMeilEX4hEVAqS0UU9jJmBzhqD385jXmqDX6hA8iRg8fKxrWmIzIh65xsfmGi26L9C8bhboXyIm8ZN",
-    "46IIFVyTsu7885U4GqNSwtfvzv7aLaAkxmV6Uv9cbo5mTIDL0XtFm1G2QqhA6TNwS6Z0UpQU4Ck6i0WY4OHW6tM9xop2Cq3rhDgI",
-    "h7dLX43fafczroxWcoR9VFr5gNqJk5FOA2GoJHGWykJGi8eOkKY9n1QbnvrIxFtEqPpSqhKoNxkaDeoADCo8uZdNrEOfjlwyeBJ2",
-    "dPJTsBGyg9WxPWs0NUTRhkIQyBMqQrhYn9HDQFSMkgYHZoDAUztcvnQD8iTurgLVqVeTsERCv8ktFwY1bIaK8jndyQruJXYgbLj2"
-  ]
+  "tokens": []
 }

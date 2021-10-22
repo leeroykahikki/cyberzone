@@ -15,6 +15,7 @@ export default function MyApp({ Component, pageProps }) {
 
   const router = useRouter();
 
+  // Отрисовывает индикатор загрузки страницы в правом нижнем углу
   useEffect(() => {
     const handleStart = () => {
       NProgress.start();
@@ -34,6 +35,7 @@ export default function MyApp({ Component, pageProps }) {
     };
   }, [router]);
 
+  // Устанавливаем тему для Material UI
   const theme = createTheme({
     palette: {
       primary: {
